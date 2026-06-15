@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uma Carta Especial</title>
+<style>
+body{
+    margin:0;
+    font-family:Georgia, serif;
+    background:#ac0126;
+    color:#2600ff;
+    overflow-x:hidden;
+}
+.container{max-width:900px;margin:auto;padding:40px 20px;}
+.envelope{
+    background:#F3E8D0;
+    border-radius:10px;
+    padding:40px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+    cursor:pointer;
+}
+.seal{
+    width:80px;height:80px;border-radius:50%;
+    background:#A52A2A;color:white;
+    display:flex;align-items:center;justify-content:center;
+    margin:20px auto;font-size:30px;
+}
+.hidden{display:none;}
+.section{
+    background:#F3E8D0;
+    margin:30px 0;
+    padding:30px;
+    border-radius:10px;
+}
+button{
+    background:#A52A2A;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:20px;
+    cursor:pointer;
+}
+.gallery{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+.gallery img{
+    width:250px;
+    border:8px solid white;
+    border-radius:10px;
+}
+.final-letter{
+    min-height:150px;
+    border:2px dashed #ffffff;
+    padding:20px;
+}
+.floating{
+    position:fixed;
+    top:-50px;
+    font-size:24px;
+    animation:fall linear infinite;
+}
+@keyframes fall{
+    to{transform:translateY(110vh) rotate(360deg);}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="envelope" onclick="abrirCarta()">
+<h2>Uma carta especial para você</h2>
+<p>Entregar imediatamente ❤️</p>
+<div class="seal">✉</div>
+<p>Clique no selo para abrir</p>
+</div>
+
+<div id="conteudo" class="hidden">
+
+<div class="section">
+<h2>💌</h2>
+<p>Oi, fiz isso porque queria tentar deixar seu dia um pouquinho mais leve. ❤️</p>
+</div>
+
+<div class="section">
+<h2>Abrir um carinho</h2>
+<button onclick="carinho()">Abrir</button>
+<p id="carinho"></p>
+</div>
+
+<div class="section">
+<h2>Lembretes importantes</h2>
+<p>🌷 Dias difíceis não definem quem você é.</p>
+<p>☁️ Descansar também é uma forma de cuidar de si.</p>
+<p>✨ Você não precisa estar feliz o tempo todo.</p>
+</div>
+
+<div class="section">
+<h2>Galeria de memórias</h2>
+<div class="gallery">
+<div>
+<img src="evelyn1.jpg" alt="Foto 1">
+</div>
+<div>
+<img src="evelyn2.jpg" alt="Foto 2">
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>Missão secreta</h2>
+<button onclick="missao()">Receber missão</button>
+<p id="missao"></p>
+</div>
+
+<div class="section">
+<h2>✉ Carta Final</h2>
+<p>Clique para abrir:</p>
+<button onclick="document.getElementById('final').classList.toggle('hidden')">Abrir Carta</button>
+
+<div id="final" class="final-letter hidden">
+Queria te lembrar de uma coisa que talvez você mesma esqueça às vezes: o quanto você é uma pessoa esforçada.
+
+Eu admiro a forma como você encara suas responsabilidades, como se dedica ao que faz e como continua tentando, mesmo quando as coisas parecem difíceis. Nem todo mundo percebe o próprio valor, mas eu espero que você nunca deixe de reconhecer o quanto é trabalhadora e determinada.
+
+Você tem uma força muito bonita. Não aquela força de nunca se cansar ou nunca errar, mas a de continuar dando o seu melhor, aprendendo, recomeçando e seguindo em frente. E isso merece ser reconhecido.
+
+Por favor, não duvide da sua capacidade. Você é inteligente, dedicada e tem um coração enorme. Talvez o caminho nem sempre seja fácil, mas eu realmente acredito que você consegue conquistar tudo aquilo que deseja, um passo de cada vez. Não porque a vida sempre será justa, mas porque você possui coragem e persistência para continuar tentando.
+
+Então, seja gentil consigo mesma. Descanse quando precisar, celebre as pequenas vitórias e lembre-se de que o seu esforço tem valor, mesmo nos dias em que ele parece invisível.
+
+E, acima de tudo, continue sendo essa pessoa incrível que se importa com os outros, que trabalha duro pelos seus sonhos e que ilumina a vida das pessoas ao seu redor de um jeito muito especial.
+
+Você é muito mais forte do que imagina, e eu espero que nunca deixe de acreditar no seu próprio potencial.
+
+Com carinho, seu amigo Kauanzinho.
+</div>
+</div>
+
+<div class="section">
+<p><strong>Continue seguindo em frente, mesmo nos dias difíceis.</strong></p>
+</div>
+
+</div>
+</div>
+
+<script>
+function abrirCarta(){
+    document.getElementById("conteudo").classList.remove("hidden");
+}
+
+const carinhos = [
+"Você não precisa resolver tudo hoje.",
+"Tem pessoas que gostam muito de ter você por perto.",
+"Seja gentil consigo mesma, você está fazendo o melhor que consegue.",
+"Seu sorriso fica muito bonito, sabia?"
+];
+
+function carinho(){
+    document.getElementById("carinho").innerText =
+    carinhos[Math.floor(Math.random()*carinhos.length)];
+}
+
+const missoes = [
+"🥤 Beba um copo d'água.",
+"🎵 Escute sua música favorita.",
+"🌤 Vá até a janela por alguns minutos.",
+"📱 Converse com alguém querido."
+];
+
+function missao(){
+    document.getElementById("missao").innerText =
+    missoes[Math.floor(Math.random()*missoes.length)];
+}
+
+for(let i=0;i<12;i++){
+    const el=document.createElement('div');
+    el.className='floating';
+    el.textContent='✉';
+    el.style.left=Math.random()*100+'vw';
+    el.style.animationDuration=(10+Math.random()*10)+'s';
+    document.body.appendChild(el);
+}
+</script>
+
+</body>
+</html>
